@@ -17,6 +17,7 @@ TagManager:
   - CannonLv2
   - LvMax
   - BuildMenuDefault
+  - Stella
   layers:
   - Default
   - TransparentFX

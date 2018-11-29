@@ -37,7 +37,6 @@ GameObject:
   - component: {fileID: 4357515822121180}
   - component: {fileID: 20361904304554302}
   - component: {fileID: 81026611167609516}
-  - component: {fileID: 114647924334493990}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -52,7 +51,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1602478201535906}
   m_LocalRotation: {x: 0.5735764, y: 0, z: 0, w: 0.8191521}
-  m_LocalPosition: {x: 40, y: 50, z: -48.1}
+  m_LocalPosition: {x: 40, y: 50, z: -50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4774982054542130}
@@ -120,8 +119,8 @@ Camera:
   m_GameObject: {fileID: 1602478201535906}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.23131008, g: 0.30975607, b: 0.4339623, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.28924882, g: 0.36667854, b: 0.49056602, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -159,17 +158,3 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1602478201535906}
   m_Enabled: 1
---- !u!114 &114647924334493990
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1602478201535906}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfe9050aab87ed846b689366bb19d358, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  zoomSpeed: 2
-  minPos: {x: 0, y: 20, z: 0}
-  maxPos: {x: 0, y: 50, z: 0}

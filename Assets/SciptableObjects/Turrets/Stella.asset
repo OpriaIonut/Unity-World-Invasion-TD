@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 289a1726902f5d94aab031adb57f2a4a, type: 3}
+  m_Name: Stella
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 1967888432658074, guid: 45afc50af1139a34e8f2478e06e2afe7,
+    type: 2}
+  canSlow: 0
+  canStun: 0
+  probability: 20
+  damage: 20
+  fireRate: 0.75
+  radius: 17.5
+  rotationSpeed: 10
+  price: 0

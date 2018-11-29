@@ -11,6 +11,10 @@ public class WaveSpawner : MonoBehaviour {
     public GameObject normalEnemy;
     public GameObject fastEnemy;
     public GameObject heavyEnemy;
+    public GameObject normalHeavy;
+    public GameObject fastHeavy;
+    public GameObject superHeavy;
+    public GameObject boss;
     public GameObject healthUI;
     [Space(10)]
 
@@ -19,16 +23,16 @@ public class WaveSpawner : MonoBehaviour {
     public Text timerText;
     [Space(10)]
 
-    /*This is a special variable, the string flux will dictate what to instantiate based on the following rules:
-     *      first there will be a letter that will describe the type of enemy to instantiate:
-     *              'n' for normal; 'f' for fast; 'h' for heavy
-     *      second, there will be a numberthat will describe the number of times to instantiate
-     *      each string represents a wave
-     * */
-    public string[] waveDescriptor;
     public float startSpawningTime = 10f;
     public float timeBetweenEnemies = 1f;
     public float timeBetweenWaves = 3f;
+
+    //This is a special variable, the string flux will dictate what to instantiate based on the following rules:
+    //        first there will be a letter that will describe the type of enemy to instantiate:
+    //        'n' for normal; 'f' for fast; 'h' for heavy; 's' for fast & heavy; 'a' for normal & heavy; 'b' for super heavy; 'B' for boss
+    //        second, there will be a numberthat will describe the number of times to instantiate
+    //         each string represents a wave
+    public string[] waveDescriptor;
 
     private int enemyCount = 0;             //Count the number of enemies to spawn per set
     private int spawnIndex = 0;             //Index used to search waveDescriptor[waveIndex]
@@ -116,6 +120,18 @@ public class WaveSpawner : MonoBehaviour {
                                 break;
                             case 'h':
                                 enemyToInstantiate = heavyEnemy;
+                                break;
+                            case 'a':
+                                enemyToInstantiate = normalHeavy;
+                                break;
+                            case 'b':
+                                enemyToInstantiate = superHeavy;
+                                break;
+                            case 's':
+                                enemyToInstantiate = fastHeavy;
+                                break;
+                            case 'B':
+                                enemyToInstantiate = boss;
                                 break;
                         }
                         enemyCount = 0;

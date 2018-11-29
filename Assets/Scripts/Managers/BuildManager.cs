@@ -32,6 +32,9 @@ public class BuildManager : MonoBehaviour {
     private TurretBunker bunkerScript;
     private TurretCannon cannonScript;
     private TurretLaser laserScript;
+    private StellaTurret stellaScript;
+
+    private bool selectingNodeForStella = false;
 
     private void Start()
     {
@@ -67,12 +70,6 @@ public class BuildManager : MonoBehaviour {
     // Bring everything back to the initial state
     private void DeselectAll()
     {
-        if (selectedNodeScript != null)
-        {
-            selectedNodeScript.SetColor(selectedNodeScript.defaultColor);
-        }
-        selectedNodeScript = null;
-
         if (laserScript != null)
         {
             laserScript.rangeUI.enabled = false;
@@ -85,6 +82,19 @@ public class BuildManager : MonoBehaviour {
         {
             bunkerScript.rangeUI.enabled = false;
         }
+        if (stellaScript != null)
+        {
+            if(selectedNodeScript != null && selectingNodeForStella == true)
+                selectedNodeScript.buildTurret = null;
+            stellaScript.rangeUI.enabled = false;
+        }
+
+        if (selectedNodeScript != null)
+        {
+            selectedNodeScript.SetColor(selectedNodeScript.defaultColor);
+        }
+        selectedNodeScript = null;
+
         DeactivateUI();
     }
 
@@ -108,6 +118,17 @@ public class BuildManager : MonoBehaviour {
     public void SelectNode(Node node)
     {
         //If we clicked a node that we already had selected, then we want to deselect it
+        if(selectingNodeForStella)
+        {
+            if(node.buildTurret == null && stellaScript != null)
+            {
+                node.buildTurret = stellaScript.gameObject;
+                stellaScript.SetMovingStatus(true, node.transform.position);
+                selectingNodeForStella = false;
+                return;
+            }
+        }
+
         if (selectedNodeScript == node)
         {
             DeselectAll();
@@ -128,6 +149,10 @@ public class BuildManager : MonoBehaviour {
                 bunkerScript = selectedNodeScript.buildTurret.GetComponent<TurretBunker>();
                 if(bunkerScript != null)
                     bunkerScript.rangeUI.enabled = false;
+
+                stellaScript = selectedNodeScript.buildTurret.GetComponent<StellaTurret>();
+                if (stellaScript != null)
+                    stellaScript.rangeUI.enabled = false;
             }
 
             //Position the build UI
@@ -157,6 +182,13 @@ public class BuildManager : MonoBehaviour {
                 {
                     ActivateUI(bunkerScript.turretName);
                     bunkerScript.rangeUI.enabled = true;
+                }
+
+                stellaScript = selectedNodeScript.buildTurret.GetComponent<StellaTurret>();
+                if (stellaScript != null)
+                {
+                    ActivateUI(stellaScript.turretName);
+                    stellaScript.rangeUI.enabled = true;
                 }
             }
             else
@@ -264,5 +296,11 @@ public class BuildManager : MonoBehaviour {
             Destroy(selectedNodeScript.buildTurret);
             DeselectAll();
         }
+    }
+
+    public void MoveStella()
+    {
+        selectingNodeForStella = true;
+        DeselectAll();
     }
 }

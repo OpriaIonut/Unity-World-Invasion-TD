@@ -52,21 +52,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnLocation: {fileID: 0}
-  parentTransform: {fileID: 0}
+  enemyParentTransform: {fileID: 0}
+  healthbarParentTransform: {fileID: 0}
   normalEnemy: {fileID: 1840284380743114, guid: 5e1692d78f799e048844d6c122a803d5,
     type: 2}
   fastEnemy: {fileID: 1736950318974982, guid: 933f4ba61d1dfdc4ea41de2802abfdb5, type: 2}
   heavyEnemy: {fileID: 1724273272310954, guid: 257ac66f33659e34684540227327f4d2, type: 2}
+  normalHeavy: {fileID: 1394634533742038, guid: e51969b124ee3a844a8948dde25175ce,
+    type: 2}
+  fastHeavy: {fileID: 1619789737678642, guid: a8bae4c3c0f41584d8d35425fc0d6124, type: 2}
+  superHeavy: {fileID: 1452260717646566, guid: 1110adb41d3a6dd4382d0343b90bab79, type: 2}
+  boss: {fileID: 1731649998821986, guid: 4d3ba5397a92e9b4a99983f564a2356d, type: 2}
   healthUI: {fileID: 1325946785318880, guid: c3c85f882cb91db41a202fd8e7f80ea9, type: 2}
   waveText: {fileID: 0}
   timerText: {fileID: 0}
+  startSpawningTime: 2
+  timeBetweenEnemies: 1
+  timeBetweenWaves: 5
   waveDescriptor:
   - n2
   - n3f2
   - n4f3h2
-  - n4f3h2n4f3h2
-  - n4f3h2n4f3h2n4f3h2
-  - h10f10n10h10f10n10h10f10n10
-  startSpawningTime: 2
-  timeBetweenEnemies: 1
-  timeBetweenWaves: 3
+  - n5f4h3a2
+  - n6f5h4a3b2
+  - n7f6h5a4b3s2
+  - B1

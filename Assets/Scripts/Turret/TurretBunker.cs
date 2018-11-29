@@ -12,12 +12,11 @@ public class TurretBunker : MonoBehaviour
     //Default variables
     public SpriteRenderer rangeUI;
 
-    private Enemy[] enemiesInRange = new Enemy[15];
+    private Enemy[] enemiesInRange = new Enemy[10];
     private short enemiesInRangeIndex = 0;
     private GameManager gameManager;
 
     private float lastShootTime = 0f;
-    private float lastChangeTargetTime = 0f;
 
     private void Start()
     {
@@ -32,7 +31,7 @@ public class TurretBunker : MonoBehaviour
     {
         if (!gameManager.gameIsPaused)
         {
-            if (Time.time - lastShootTime > status.fireRate && enemiesInRangeIndex > 0)
+            if (Time.time - lastShootTime > status.fireRate)
             {
                 FireBunker();
                 lastShootTime = Time.time;
@@ -42,9 +41,15 @@ public class TurretBunker : MonoBehaviour
 
     void FireBunker()
     {
-        anim.SetTrigger("PlayAnim");
+        GetTargets();
+
+        if(enemiesInRangeIndex > 0)
+        {
+            anim.SetTrigger("PlayAnim");
+        }
         for (int index = 0; index < enemiesInRangeIndex; index++)
         {
+
             //Sometimes, if we kill an enemy, the script is still selected as null, so we need to check beforehand if we killed him or not
             if (enemiesInRange[index] != null)
             {
@@ -61,48 +66,24 @@ public class TurretBunker : MonoBehaviour
                     }
                 }
 
-                if (enemiesInRange[index].TakeDamage(status.damage) <= 0)
-                {
-                    CleanArray(index);
-                    index--;
-                }
+                enemiesInRange[index].TakeDamage(status.damage);
             }
         }
     }
 
-    private void CleanArray(int index)
+    private void GetTargets()
     {
-        while (index < enemiesInRangeIndex - 1)
-        {
-            enemiesInRange[index] = enemiesInRange[index + 1];
-            index++;
-        }
-        if (enemiesInRangeIndex > 0)
-        {
-            enemiesInRangeIndex--;
-            enemiesInRange[enemiesInRangeIndex] = null;
-        }
-    }
+        enemiesInRangeIndex = 0;
+        Enemy[] enemyInstances = GameObject.FindObjectsOfType<Enemy>();
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Enemy")
+        foreach(Enemy enemy in enemyInstances)
         {
-            enemiesInRange[enemiesInRangeIndex] = other.gameObject.GetComponent<Enemy>();
-            enemiesInRangeIndex++;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "Enemy")
-        {
-            for (int index = 0; index < enemiesInRangeIndex; index++)
-                if (enemiesInRange[index] == other.gameObject.GetComponent<Enemy>())
-                {
-                    enemiesInRange[index].StopSlow();
-                    CleanArray(index);
-                }
+            float distance = Vector3.Distance(enemy.transform.position, transform.position);
+            if (distance <= status.radius)
+            {
+                enemiesInRange[enemiesInRangeIndex] = enemy;
+                enemiesInRangeIndex++;
+            }
         }
     }
 }
