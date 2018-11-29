@@ -28,7 +28,10 @@ public class BuildManager : MonoBehaviour {
     private GameManager gameManager;
     private GameObject buildTurretUI;
     private Node selectedNodeScript;
-    private Turret turretScript;
+
+    private TurretBunker bunkerScript;
+    private TurretCannon cannonScript;
+    private TurretLaser laserScript;
 
     private void Start()
     {
@@ -70,9 +73,17 @@ public class BuildManager : MonoBehaviour {
         }
         selectedNodeScript = null;
 
-        if (turretScript != null)
+        if (laserScript != null)
         {
-            turretScript.rangeUI.enabled = false;
+            laserScript.rangeUI.enabled = false;
+        }
+        if (cannonScript != null)
+        {
+            cannonScript.rangeUI.enabled = false;
+        }
+        if (bunkerScript != null)
+        {
+            bunkerScript.rangeUI.enabled = false;
         }
         DeactivateUI();
     }
@@ -106,8 +117,17 @@ public class BuildManager : MonoBehaviour {
             //If we had a node that had a turret already build on it, then we want to hide the rangeUI before selecting a new node
             if (selectedNodeScript != null && selectedNodeScript.buildTurret != null)
             {
-                turretScript = selectedNodeScript.buildTurret.GetComponent<Turret>();
-                turretScript.rangeUI.enabled = false;
+                laserScript = selectedNodeScript.buildTurret.GetComponent<TurretLaser>();
+                if(laserScript != null)
+                    laserScript.rangeUI.enabled = false;
+
+                cannonScript = selectedNodeScript.buildTurret.GetComponent<TurretCannon>();
+                if(cannonScript != null)
+                    cannonScript.rangeUI.enabled = false;
+
+                bunkerScript = selectedNodeScript.buildTurret.GetComponent<TurretBunker>();
+                if(bunkerScript != null)
+                    bunkerScript.rangeUI.enabled = false;
             }
 
             //Position the build UI
@@ -118,9 +138,26 @@ public class BuildManager : MonoBehaviour {
             //If we have a turret already placed on the selected node, then we want to show it's range
             if (selectedNodeScript.buildTurret != null)
             {
-                turretScript = selectedNodeScript.buildTurret.GetComponent<Turret>();
-                turretScript.rangeUI.enabled = true;
-                ActivateUI(turretScript.turretName);
+                laserScript = selectedNodeScript.buildTurret.GetComponent<TurretLaser>();
+                if (laserScript != null)
+                {
+                    ActivateUI(laserScript.turretName);
+                    laserScript.rangeUI.enabled = true;
+                }
+
+                cannonScript = selectedNodeScript.buildTurret.GetComponent<TurretCannon>();
+                if (cannonScript != null)
+                {
+                    ActivateUI(cannonScript.turretName);
+                    cannonScript.rangeUI.enabled = true;
+                }
+
+                bunkerScript = selectedNodeScript.buildTurret.GetComponent<TurretBunker>();
+                if (bunkerScript != null)
+                {
+                    ActivateUI(bunkerScript.turretName);
+                    bunkerScript.rangeUI.enabled = true;
+                }
             }
             else
             {
@@ -139,24 +176,65 @@ public class BuildManager : MonoBehaviour {
     {
         if (!gameManager.gameIsPaused)
         {
-            turretScript = turretPrefab.GetComponent<Turret>();
-
-            if (turretScript.status.price <= levelMoney)
+            laserScript = turretPrefab.GetComponent<TurretLaser>();
+            if (laserScript != null)
             {
-                if (selectedNodeScript.buildTurret != null)
+                if (laserScript.status.price <= levelMoney)
                 {
-                    Destroy(selectedNodeScript.buildTurret);
+                    if (selectedNodeScript.buildTurret != null)
+                    {
+                        Destroy(selectedNodeScript.buildTurret);
+                    }
+
+                    AddMoney(-laserScript.status.price);
+
+                    GameObject clone = Instantiate(turretPrefab, turretParentTransform);
+                    clone.transform.position = selectedNodeScript.transform.position + offset;
+                    selectedNodeScript.buildTurret = clone;
+
+                    DeselectAll();
                 }
-
-                AddMoney(-turretScript.status.price);
-
-                GameObject clone = Instantiate(turretPrefab, turretParentTransform);
-                clone.transform.position = selectedNodeScript.transform.position + offset;
-                selectedNodeScript.buildTurret = clone;
-
-                DeselectAll();
             }
 
+            cannonScript = turretPrefab.GetComponent<TurretCannon>();
+            if (cannonScript != null)
+            {
+                if (cannonScript.status.price <= levelMoney)
+                {
+                    if (selectedNodeScript.buildTurret != null)
+                    {
+                        Destroy(selectedNodeScript.buildTurret);
+                    }
+
+                    AddMoney(-cannonScript.status.price);
+
+                    GameObject clone = Instantiate(turretPrefab, turretParentTransform);
+                    clone.transform.position = selectedNodeScript.transform.position + offset;
+                    selectedNodeScript.buildTurret = clone;
+
+                    DeselectAll();
+                }
+            }
+
+            bunkerScript = turretPrefab.GetComponent<TurretBunker>();
+            if (bunkerScript != null)
+            {
+                if (bunkerScript.status.price <= levelMoney)
+                {
+                    if (selectedNodeScript.buildTurret != null)
+                    {
+                        Destroy(selectedNodeScript.buildTurret);
+                    }
+
+                    AddMoney(-bunkerScript.status.price);
+
+                    GameObject clone = Instantiate(turretPrefab, turretParentTransform);
+                    clone.transform.position = selectedNodeScript.transform.position + offset;
+                    selectedNodeScript.buildTurret = clone;
+
+                    DeselectAll();
+                }
+            }
         }
     }
 
@@ -165,8 +243,23 @@ public class BuildManager : MonoBehaviour {
         if (!gameManager.gameIsPaused)
         {
             //Destroy the build turret; deselect everything related to the selected node
-            turretScript = selectedNodeScript.buildTurret.GetComponent<Turret>();
-            AddMoney(turretScript.status.price / 2);
+            laserScript = selectedNodeScript.buildTurret.GetComponent<TurretLaser>();
+            if (laserScript != null)
+            {
+                AddMoney(laserScript.status.price / 2);
+            }
+
+            cannonScript = selectedNodeScript.buildTurret.GetComponent<TurretCannon>();
+            if (cannonScript != null)
+            {
+                AddMoney(cannonScript.status.price / 2);
+            }
+
+            bunkerScript = selectedNodeScript.buildTurret.GetComponent<TurretBunker>();
+            if (bunkerScript != null)
+            {
+                AddMoney(bunkerScript.status.price / 2);
+            }
 
             Destroy(selectedNodeScript.buildTurret);
             DeselectAll();

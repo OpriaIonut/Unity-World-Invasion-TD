@@ -116,7 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4908405791749294}
   - component: {fileID: 54907614547105860}
-  - component: {fileID: 114695436380452712}
+  - component: {fileID: 114368362305168976}
   m_Layer: 0
   m_Name: TurretCannon_Level2
   m_TagString: Untagged
@@ -394,7 +394,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114695436380452712
+--- !u!114 &114368362305168976
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -402,12 +402,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1747030191355948}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 571350e0d9991924989223f76c5f4881, type: 3}
+  m_Script: {fileID: 11500000, guid: aa4defe0804fc3d4b995656a593302fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   status: {fileID: 11400000, guid: f319a44b0aa40c54aa61840d90df3eae, type: 2}
   turretName: CannonLv2
-  bunkerWaveUI: {fileID: 0}
   firePoint: {fileID: 4863158289146872}
   partToRotate: {fileID: 4718475877569928}
   rangeUI: {fileID: 212680702641557606}
@@ -458,7 +457,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: e3d63cf183b6eeb4b961f6cc26a79eca, type: 3}
   m_Color: {r: 0.13333334, g: 0.76862746, b: 0.8666667, a: 0.29411766}
   m_FlipX: 0
   m_FlipY: 0

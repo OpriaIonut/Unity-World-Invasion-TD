@@ -28,13 +28,14 @@ public class Enemy : MonoBehaviour {
         }
     }
 
-    public void TakeDamage(float ammount)
+    public float TakeDamage(float ammount)
     {
         health -= ammount;
         if (health <= 0)
         {
             Die();
         }
+        return health;
     }
 
     void Die()

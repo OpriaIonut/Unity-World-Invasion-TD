@@ -35,7 +35,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4666038843919994}
   - component: {fileID: 54052744962043224}
-  - component: {fileID: 114929875162202258}
+  - component: {fileID: 114874560250301192}
   - component: {fileID: 95386596298807374}
   m_Layer: 0
   m_Name: TurretBunker_Level2
@@ -342,7 +342,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114929875162202258
+--- !u!114 &114874560250301192
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -350,14 +350,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1144093162698184}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 571350e0d9991924989223f76c5f4881, type: 3}
+  m_Script: {fileID: 11500000, guid: 3feca6a00f9edad4d803c850bbd298b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   status: {fileID: 11400000, guid: 0f224427ae4a1ce4991dbb1c2f576260, type: 2}
   turretName: BunkerLv2
   bunkerWaveUI: {fileID: 4022909120017668}
-  firePoint: {fileID: 0}
-  partToRotate: {fileID: 0}
   rangeUI: {fileID: 212744475163326876}
 --- !u!135 &135767777706365584
 SphereCollider:
@@ -406,7 +404,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: e3d63cf183b6eeb4b961f6cc26a79eca, type: 3}
   m_Color: {r: 0.8392157, g: 0.28031895, b: 0.090196095, a: 0.39215687}
   m_FlipX: 0
   m_FlipY: 0
@@ -452,7 +450,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: e3d63cf183b6eeb4b961f6cc26a79eca, type: 3}
   m_Color: {r: 0.13510147, g: 0.7681235, b: 0.8679245, a: 0.29411766}
   m_FlipX: 0
   m_FlipY: 0

@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4929447251483824}
   - component: {fileID: 54456737332138278}
-  - component: {fileID: 114486951518715818}
+  - component: {fileID: 114552320245224232}
   - component: {fileID: 120075228003983198}
   m_Layer: 0
   m_Name: TurretLaser_Level3_Slow
@@ -398,7 +398,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114486951518715818
+--- !u!114 &114552320245224232
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -406,12 +406,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1899804441115594}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 571350e0d9991924989223f76c5f4881, type: 3}
+  m_Script: {fileID: 11500000, guid: 655fc182f0035bb4e9b74316bf7ece7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   status: {fileID: 11400000, guid: 0e07b06f4b28182458750865f19f66d2, type: 2}
   turretName: LvMax
-  bunkerWaveUI: {fileID: 0}
   firePoint: {fileID: 4730326888188090}
   partToRotate: {fileID: 4832321434905416}
   rangeUI: {fileID: 212859807514868622}
@@ -554,7 +553,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: e3d63cf183b6eeb4b961f6cc26a79eca, type: 3}
   m_Color: {r: 0.13333334, g: 0.76862746, b: 0.8666667, a: 0.29411766}
   m_FlipX: 0
   m_FlipY: 0

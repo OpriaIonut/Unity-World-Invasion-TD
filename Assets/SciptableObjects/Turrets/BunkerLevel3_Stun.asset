@@ -16,7 +16,7 @@ MonoBehaviour:
   isBunker: 1
   canSlow: 0
   canStun: 1
-  probability: 15
+  probability: 20
   damage: 30
   fireRate: 2
   radius: 12.5

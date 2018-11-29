@@ -4,8 +4,6 @@
 public class TurretStatus : ScriptableObject {
     
     public GameObject bulletPrefab;
-    public bool isLaser = false;
-    public bool isBunker = false;
     public bool canSlow = false;
     public bool canStun = false;
     public float probability = 20f;
