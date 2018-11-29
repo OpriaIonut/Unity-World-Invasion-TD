@@ -2783,7 +2783,7 @@ MonoBehaviour:
         m_MethodName: BuildTurret
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1904367461938776, guid: ad756cb787c79124fb9006950a78b2cd,
+          m_ObjectArgument: {fileID: 1920865827731252, guid: e3f576200e9e5da408af8f4ccec2b86a,
             type: 2}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
@@ -3458,7 +3458,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &224000705294791524
 RectTransform:
@@ -3520,7 +3520,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.1, y: 5}
+  m_AnchoredPosition: {x: -0.1, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224135113344321966

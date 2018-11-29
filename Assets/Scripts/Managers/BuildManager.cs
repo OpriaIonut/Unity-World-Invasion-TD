@@ -24,7 +24,7 @@ public class BuildManager : MonoBehaviour {
     public Transform turretParentTransform;
     public BuildMenuCanvas buildMenuCanvas;
 
-    private Vector3 offset = new Vector3(0f, 0.5f, 0f);
+    private Vector3 offset = new Vector3(0f, 1.1f, 0f);
     private GameManager gameManager;
     private GameObject buildTurretUI;
     private Node selectedNodeScript;
@@ -113,7 +113,7 @@ public class BuildManager : MonoBehaviour {
             //Position the build UI
             selectedNodeScript = node;
             selectedNodeScript.SetColor(selectedNodeScript.selectedColor);
-            buildTurretUI.transform.position = new Vector3(selectedNodeScript.transform.position.x, 5f, selectedNodeScript.transform.position.z);
+            buildTurretUI.transform.position = new Vector3(selectedNodeScript.transform.position.x, 0f, selectedNodeScript.transform.position.z);
 
             //If we have a turret already placed on the selected node, then we want to show it's range
             if (selectedNodeScript.buildTurret != null)
