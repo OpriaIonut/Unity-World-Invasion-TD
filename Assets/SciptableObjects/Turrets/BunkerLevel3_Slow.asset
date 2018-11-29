@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 289a1726902f5d94aab031adb57f2a4a, type: 3}
+  m_Name: BunkerLevel3_Slow
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 0}
+  isLaser: 0
+  isBunker: 1
+  canSlow: 1
+  canStun: 0
+  damage: 30
+  fireRate: 2
+  radius: 12.5
+  rotationSpeed: 10
+  price: 500
