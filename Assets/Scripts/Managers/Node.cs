@@ -32,8 +32,10 @@ public class Node : MonoBehaviour {
     {
         if (!gameManager.gameIsPaused)
         {
-            if (BuildManager.instance.GetSelectedNode() != this.gameObject)
+            if (BuildManager.instance.GetSelectedNode() != this)
+            {
                 SetColor(defaultColor);
+            }
         }
     }
 

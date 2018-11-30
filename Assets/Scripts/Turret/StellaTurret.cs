@@ -11,6 +11,7 @@ public class StellaTurret : MonoBehaviour
     public SpriteRenderer rangeUI;
     public float speed = 10f;
 
+    private Node currentNode;
     private Enemy enemyScript;
     private Quaternion defaultRotation;
     private GameManager gameManager;
@@ -51,8 +52,9 @@ public class StellaTurret : MonoBehaviour
     }
 
 
-    public void SetMovingStatus(bool status, Vector3 pos)
+    public void SetMovingStatus(bool status, Vector3 pos, Node node)
     {
+        currentNode = node;
         pos.y = 0f;
         isMoving = status;
         destination = pos;
@@ -65,7 +67,8 @@ public class StellaTurret : MonoBehaviour
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
         if(Vector3.Distance(destination, transform.position) < 0.1f)
         {
-            SetMovingStatus(false, transform.position);
+            SetMovingStatus(false, transform.position, currentNode);
+            currentNode.SetColor(currentNode.defaultColor);
         }
     }
 

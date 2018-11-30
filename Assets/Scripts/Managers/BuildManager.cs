@@ -117,18 +117,19 @@ public class BuildManager : MonoBehaviour {
 
     public void SelectNode(Node node)
     {
-        //If we clicked a node that we already had selected, then we want to deselect it
         if(selectingNodeForStella)
         {
             if(node.buildTurret == null && stellaScript != null)
             {
+                node.SetColor(node.selectedColor);
                 node.buildTurret = stellaScript.gameObject;
-                stellaScript.SetMovingStatus(true, node.transform.position);
+                stellaScript.SetMovingStatus(true, node.transform.position, node);
                 selectingNodeForStella = false;
                 return;
             }
         }
 
+        //If we clicked a node that we already had selected, then we want to deselect it
         if (selectedNodeScript == node)
         {
             DeselectAll();
@@ -154,6 +155,10 @@ public class BuildManager : MonoBehaviour {
                 if (stellaScript != null)
                     stellaScript.rangeUI.enabled = false;
             }
+
+            //Change the color of the previous node to default
+            if(selectedNodeScript != null)
+                selectedNodeScript.SetColor(selectedNodeScript.defaultColor);
 
             //Position the build UI
             selectedNodeScript = node;
