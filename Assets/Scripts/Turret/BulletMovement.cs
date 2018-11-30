@@ -12,11 +12,11 @@ public class BulletMovement : MonoBehaviour {
     [HideInInspector]
     public float damageValue;
     private Transform target;
-    private GameManager gameManager;
+    private LevelManager gameManager;
 
     private void Start()
     {
-        gameManager = GameManager.instance;
+        gameManager = LevelManager.instance;
     }
 
     private void Update()

@@ -14,13 +14,13 @@ public class TurretBunker : MonoBehaviour
 
     private Enemy[] enemiesInRange = new Enemy[10];
     private short enemiesInRangeIndex = 0;
-    private GameManager gameManager;
+    private LevelManager gameManager;
 
     private float lastShootTime = 0f;
 
     private void Start()
     {
-        gameManager = GameManager.instance;
+        gameManager = LevelManager.instance;
         anim = GetComponent<Animator>();
 
         rangeUI.transform.localScale = new Vector3(status.radius, status.radius, 1f);

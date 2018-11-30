@@ -25,7 +25,7 @@ public class BuildManager : MonoBehaviour {
     public BuildMenuCanvas buildMenuCanvas;
 
     private Vector3 offset = new Vector3(0f, 1.1f, 0f);
-    private GameManager gameManager;
+    private LevelManager gameManager;
     private GameObject buildTurretUI;
     private Node selectedNodeScript;
 
@@ -39,7 +39,7 @@ public class BuildManager : MonoBehaviour {
     private void Start()
     {
         buildTurretUI = GameObject.FindWithTag("TurretSpawnerUI");
-        gameManager = GameManager.instance;
+        gameManager = LevelManager.instance;
     }
 
     private void Update()
@@ -231,6 +231,10 @@ public class BuildManager : MonoBehaviour {
 
                     DeselectAll();
                 }
+                else
+                {
+                    laserScript = selectedNodeScript.buildTurret.GetComponent<TurretLaser>();
+                }
             }
 
             cannonScript = turretPrefab.GetComponent<TurretCannon>();
@@ -251,6 +255,10 @@ public class BuildManager : MonoBehaviour {
 
                     DeselectAll();
                 }
+                else
+                {
+                    cannonScript = selectedNodeScript.buildTurret.GetComponent<TurretCannon>();
+                }
             }
 
             bunkerScript = turretPrefab.GetComponent<TurretBunker>();
@@ -270,6 +278,10 @@ public class BuildManager : MonoBehaviour {
                     selectedNodeScript.buildTurret = clone;
 
                     DeselectAll();
+                }
+                else
+                {
+                    bunkerScript = selectedNodeScript.buildTurret.GetComponent<TurretBunker>();
                 }
             }
         }

@@ -40,7 +40,7 @@ public class WaveSpawner : MonoBehaviour {
     private GameObject enemyToInstantiate;  //Auxiliar variable used to remember what enemy to instantiate
     private GameObject clone;               //Auxiliar variable used to remember the object that we instantiated, so we can change some of his status
     private HealthBar healthClone;          //Auxiliar variable used to remember the object that we instantiated, so we can change some of his status
-    private GameManager gameManager;        //Used to know if game is paused or not
+    private LevelManager gameManager;        //Used to know if game is paused or not
     private float textTimer;                //Timer used to change the timer on the screen
 
     private float startTimer = 0;               //Timer used to delay the start of the first wave
@@ -52,7 +52,7 @@ public class WaveSpawner : MonoBehaviour {
     private bool reachedEndOfLevel = false;     //Bool used to stop spawning after we spawned all waves.
 
 	void Start () {
-        gameManager = GameManager.instance;
+        gameManager = LevelManager.instance;
         waveText.text = "Wave\t0 / " + (waveDescriptor.Length - 1);
         textTimer = startSpawningTime;
 	}

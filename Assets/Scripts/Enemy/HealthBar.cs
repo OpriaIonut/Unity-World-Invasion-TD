@@ -8,11 +8,11 @@ public class HealthBar : MonoBehaviour {
     public Vector3 offset;
 
     private float maxHealth;
-    private GameManager gameManager;
+    private LevelManager gameManager;
 
     private void Start()
     {
-        gameManager = GameManager.instance;
+        gameManager = LevelManager.instance;
         maxHealth = targetScript.health;
     }
 

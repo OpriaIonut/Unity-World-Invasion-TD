@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 65594477425542588}
   - component: {fileID: 114714684890897182}
   m_Layer: 0
-  m_Name: NodeV2
+  m_Name: Node
   m_TagString: Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,6 +125,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverColor: {r: 0.21960661, g: 0.4433962, b: 0.21960661, a: 0}
-  selectedColor: {r: 0.6792453, g: 0.09291565, b: 0.09291565, a: 0}
+  selectedColor: {r: 0.6603774, g: 0.5902596, b: 0.021804927, a: 0}
   buildTurret: {fileID: 0}
   defaultColor: {r: 0, g: 0, b: 0, a: 0}

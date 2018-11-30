@@ -7,8 +7,7 @@ public class Enemy : MonoBehaviour {
     public float speed;
 
     private BuildManager buildManager;
-    private GameManager gameManager;
-    private bool isSlowed = false;
+    private LevelManager gameManager;
     private bool isStunned = false;
     private float stunTime = 0f;
 
@@ -45,13 +44,11 @@ public class Enemy : MonoBehaviour {
 
     public void Slow()
     {
-        isSlowed = true;
         speed = enemyStatus.speed / 2f;
     }
 
     public void StopSlow()
     {
-        isSlowed = false;
         speed = enemyStatus.speed;
     }
 
@@ -64,7 +61,7 @@ public class Enemy : MonoBehaviour {
 
     public void ReachedDestination()
     {
-        gameManager = GameManager.instance;
+        gameManager = LevelManager.instance;
         gameManager.LoseLives(enemyStatus.damageValue);
         Destroy(gameObject);
     }

@@ -14,7 +14,7 @@ public class StellaTurret : MonoBehaviour
     private Node currentNode;
     private Enemy enemyScript;
     private Quaternion defaultRotation;
-    private GameManager gameManager;
+    private LevelManager gameManager;
 
     private Vector3 destination;
     private bool isMoving = false;
@@ -23,7 +23,7 @@ public class StellaTurret : MonoBehaviour
 
     private void Start()
     {
-        gameManager = GameManager.instance;
+        gameManager = LevelManager.instance;
         defaultRotation = new Quaternion(0f, 180f, 0f, 0f).normalized;
 
         rangeUI.transform.localScale = new Vector3(status.radius, status.radius, 1f);

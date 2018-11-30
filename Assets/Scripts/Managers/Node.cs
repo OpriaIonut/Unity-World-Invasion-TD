@@ -11,13 +11,13 @@ public class Node : MonoBehaviour {
     [HideInInspector]
     public Color defaultColor;
     private Renderer renderer;
-    private GameManager gameManager;
+    private LevelManager gameManager;
 
     private void Start()
     {
         renderer = GetComponent<Renderer>();
         defaultColor = renderer.material.color;
-        gameManager = GameManager.instance;
+        gameManager = LevelManager.instance;
     }
 
     private void OnMouseEnter()

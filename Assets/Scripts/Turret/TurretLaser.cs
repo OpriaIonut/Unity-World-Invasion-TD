@@ -15,13 +15,13 @@ public class TurretLaser : MonoBehaviour
 
     private Enemy enemyScript;
     private Quaternion defaultRotation;
-    private GameManager gameManager;
+    private LevelManager gameManager;
 
     private float lastChangeTargetTime = 0f;
 
     private void Start()
     {
-        gameManager = GameManager.instance;
+        gameManager = LevelManager.instance;
         lineRenderer = GetComponent<LineRenderer>();
         defaultRotation = new Quaternion(0f, 180f, 0f, 0f).normalized;
 

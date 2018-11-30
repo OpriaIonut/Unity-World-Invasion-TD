@@ -7,12 +7,12 @@ public class EnemyMovement : MonoBehaviour {
     private Transform target;                       // Used to move between waypoints
     private WaypointsTransform waypointsScript;     // Get the waypoints
     private Enemy enemyScript;                      // Get status and Reached destination
-    private GameManager gameManager;                // Needed to know if game is paused or not
+    private LevelManager gameManager;                // Needed to know if game is paused or not
     private int currentIndex = 0;                   // Index used for traveling between waypoints
 
     private void Start()
     {
-        gameManager = GameManager.instance;
+        gameManager = LevelManager.instance;
         waypointsScript = FindObjectOfType<WaypointsTransform>().GetComponent<WaypointsTransform>();
         enemyScript = GetComponent<Enemy>();
         target = waypointsScript.waypointsTransform[0];

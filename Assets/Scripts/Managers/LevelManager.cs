@@ -2,10 +2,10 @@
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour {
+public class LevelManager : MonoBehaviour {
 
     //Singleton
-    public static GameManager instance;
+    public static LevelManager instance;
 
     private void Awake()
     {
@@ -24,12 +24,11 @@ public class GameManager : MonoBehaviour {
     public int currentLives = 20;
     public Text livesText;
     public bool gameIsPaused = false;
-
-    private GameObject waveSpawner;
+    public GameObject pauseGameCanvas;
 
     private void Start()
     {
-        waveSpawner = FindObjectOfType<WaveSpawner>().gameObject;
+        pauseGameCanvas.SetActive(gameIsPaused);
     }
 
     public void LoseLives(int ammount)
@@ -48,10 +47,21 @@ public class GameManager : MonoBehaviour {
     public void PauseGame()
     {
         gameIsPaused = !gameIsPaused;
+        pauseGameCanvas.SetActive(gameIsPaused);
     }
 
     private void GameOver()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        LoadScene("MainMenu");
+    }
+
+    public void LoadScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }
