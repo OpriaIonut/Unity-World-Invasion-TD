@@ -51,7 +51,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2429d2bd6a11304a95e654156dbe583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentLevel: 1
   currentLives: 20
   livesText: {fileID: 0}
   gameIsPaused: 0
   pauseGameCanvas: {fileID: 0}
+  gameWonUI: {fileID: 0}
+  levelStars:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  gameOverUI: {fileID: 0}

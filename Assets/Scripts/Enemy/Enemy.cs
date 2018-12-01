@@ -5,17 +5,17 @@ public class Enemy : MonoBehaviour {
     public EnemyStatus enemyStatus;
     public float health;
     public float speed;
-
-    private BuildManager buildManager;
+    public bool isSlowed = false;
+    
     private LevelManager gameManager;
     private bool isStunned = false;
     private float stunTime = 0f;
 
     private void Start()
     {
+        gameManager = LevelManager.instance;
         speed = enemyStatus.speed;
-        health = enemyStatus.health;
-        buildManager = BuildManager.instance;
+        health = enemyStatus.health * (1f + gameManager.currentLevel / 15f);
     }
 
     private void Update()
@@ -38,17 +38,19 @@ public class Enemy : MonoBehaviour {
 
     void Die()
     {
-        buildManager.AddMoney(enemyStatus.moneyValue);
+        BuildManager.instance.AddMoney(enemyStatus.moneyValue);
         Destroy(gameObject);
     }
 
     public void Slow()
     {
+        isSlowed = true;
         speed = enemyStatus.speed / 2f;
     }
 
     public void StopSlow()
     {
+        isSlowed = false;
         speed = enemyStatus.speed;
     }
 
@@ -61,7 +63,6 @@ public class Enemy : MonoBehaviour {
 
     public void ReachedDestination()
     {
-        gameManager = LevelManager.instance;
         gameManager.LoseLives(enemyStatus.damageValue);
         Destroy(gameObject);
     }

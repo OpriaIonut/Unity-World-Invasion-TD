@@ -21,6 +21,7 @@ public class WaveSpawner : MonoBehaviour {
         [Header("UI elements")]
     public Text waveText;
     public Text timerText;
+    public GameObject startButton;
     [Space(10)]
 
     public float startSpawningTime = 10f;
@@ -40,10 +41,10 @@ public class WaveSpawner : MonoBehaviour {
     private GameObject enemyToInstantiate;  //Auxiliar variable used to remember what enemy to instantiate
     private GameObject clone;               //Auxiliar variable used to remember the object that we instantiated, so we can change some of his status
     private HealthBar healthClone;          //Auxiliar variable used to remember the object that we instantiated, so we can change some of his status
-    private LevelManager gameManager;        //Used to know if game is paused or not
+    private LevelManager levelManager;        //Used to know if game is paused or not
     private float textTimer;                //Timer used to change the timer on the screen
 
-    private float startTimer = 0;               //Timer used to delay the start of the first wave
+    private bool startGame = false;
     private float spawnEnemiesTimer = 0;        //Timer used to delay the spawn time between enemies (used with timeBetweenEnemies)
     private float changeWaveTimer = 0;          //Timer used to delay the time between each wave (used with timeBetweenWaves)
     private float spawnEnemiesPausedTimer = 0;  //Timer that remembers the time that went by while the game was paused (used with spawnEnemiesTimer and timeBetweenEnemies)
@@ -52,7 +53,7 @@ public class WaveSpawner : MonoBehaviour {
     private bool reachedEndOfLevel = false;     //Bool used to stop spawning after we spawned all waves.
 
 	void Start () {
-        gameManager = LevelManager.instance;
+        levelManager = LevelManager.instance;
         waveText.text = "Wave\t0 / " + (waveDescriptor.Length - 1);
         textTimer = startSpawningTime;
 	}
@@ -60,7 +61,7 @@ public class WaveSpawner : MonoBehaviour {
     private void Update()
     {
         //Show the timer on the screen
-        if (gameManager.gameIsPaused == false)
+        if (levelManager.gameIsPaused == false)
         {
             textTimer -= Time.deltaTime;
 
@@ -71,20 +72,16 @@ public class WaveSpawner : MonoBehaviour {
         }
 
         //Remember the time that went by while the time was paused
-        if (gameManager.gameIsPaused == true)
+        if (levelManager.gameIsPaused == true)
         {
             spawnEnemiesPausedTimer += Time.deltaTime;
             changeWavePausedTimer += Time.deltaTime;
         }
 
 
-        if (reachedEndOfLevel == false && gameManager.gameIsPaused == false)
+        if (reachedEndOfLevel == false && levelManager.gameIsPaused == false)
         {
-            //If we are at the begining of the level, then we want to delay the spawn based on startSpawningTime
-            if (startTimer == 0)
-                startTimer = Time.time;
-
-            if (Time.time - startTimer > startSpawningTime)
+            if(startGame == true)
             {
                 //Get the time it takes to complete the wave so we can show it on the screen
                 //We only want to change it when it reaches 0 or we reach the end of the level
@@ -93,7 +90,7 @@ public class WaveSpawner : MonoBehaviour {
                     if (textTimer <= 0)
                     {
                         int count = 0;
-                        for (int index = 0; index < waveDescriptor[waveIndex].Length; index += 2)
+                        for (int index = 0; index < waveDescriptor[waveIndex].Length - 1; index += 2)
                             count += waveDescriptor[waveIndex][index + 1] - '0';
                         textTimer = timeBetweenEnemies * count + timeBetweenWaves;
                     }
@@ -136,8 +133,10 @@ public class WaveSpawner : MonoBehaviour {
                         }
                         enemyCount = 0;
                         for (int index = spawnIndex + 1; index < waveDescriptor[waveIndex].Length && waveDescriptor[waveIndex][index] >= '0' && waveDescriptor[waveIndex][index] <= '9'; index++){
-                            enemyCount = enemyCount * 10 + waveDescriptor[waveIndex][index] - '0';
+                            enemyCount = enemyCount * 10 + (waveDescriptor[waveIndex][index] - '0');
+                            spawnIndex++;
                         }
+                        spawnIndex--;
                     }
                 }
 
@@ -189,12 +188,19 @@ public class WaveSpawner : MonoBehaviour {
                         {
                             //Else, we reached the end of the level
                             reachedEndOfLevel = true;
+                            levelManager.AllEnemiesSpawned();
                         }
                     }
 
                 }
             }
         }
+    }
+
+    public void StartGame()
+    {
+        startGame = true;
+        startButton.SetActive(false);
     }
 
     private void InstantiateClones()

@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b80f2dc35dc69a04fb29c61ac6bed937, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 25
   rangeUI: {fileID: 1297066968318866}
   gfx: {fileID: 1525199355654098}
   damageValue: 0
@@ -251,7 +251,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: cca7bf3bf835ef8459eec87760ae3ae9, type: 3}
   m_Color: {r: 0.7830189, g: 0.22963336, b: 0.12927197, a: 0.39215687}
   m_FlipX: 0
   m_FlipY: 0

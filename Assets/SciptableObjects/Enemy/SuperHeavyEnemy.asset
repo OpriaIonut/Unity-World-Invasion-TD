@@ -14,4 +14,4 @@ MonoBehaviour:
   health: 600
   speed: 7
   damageValue: 5
-  moneyValue: 350
+  moneyValue: 400

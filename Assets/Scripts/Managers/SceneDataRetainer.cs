@@ -20,6 +20,8 @@ public class SceneDataRetainer : MonoBehaviour {
     #endregion
 
     public int permanentUpgradeMoney;
+    public int moneyPerLevel = 200;
+    public int moneyMultplier = 25;
     public int[] starsPerLevel = new int[30];
 
     public float[] cannonMultipliers = new float[3];

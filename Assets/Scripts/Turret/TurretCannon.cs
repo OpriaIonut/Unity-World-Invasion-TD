@@ -13,16 +13,26 @@ public class TurretCannon : MonoBehaviour
     private Enemy enemyScript;
     private Quaternion defaultRotation;
     private LevelManager gameManager;
+    private SceneDataRetainer dataRetainer;
 
     private float lastShootTime = 0f;
     private float lastChangeTargetTime = 0f;
 
+    private float damage;
+    private float range;
+    private float fireRate;
+
     private void Start()
     {
+        dataRetainer = SceneDataRetainer.instance;
+        range = status.radius * dataRetainer.cannonMultipliers[0];
+        damage = status.damage * dataRetainer.cannonMultipliers[1];
+        fireRate = status.fireRate / dataRetainer.cannonMultipliers[2];
+
         gameManager = LevelManager.instance;
         defaultRotation = new Quaternion(0f, 180f, 0f, 0f).normalized;
 
-        rangeUI.transform.localScale = new Vector3(status.radius, status.radius, 1f);
+        rangeUI.transform.localScale = new Vector3(range, range, 1f);
     }
 
     private void Update()
@@ -33,7 +43,7 @@ public class TurretCannon : MonoBehaviour
             LockOnTarget();
 
             //If we can shoot and we have a target, then we shoot
-            if (Time.time - lastShootTime > status.fireRate)
+            if (Time.time - lastShootTime > fireRate)
             {
                 FireBullet();
             }
@@ -49,7 +59,7 @@ public class TurretCannon : MonoBehaviour
             clone.transform.position = firePoint.position;
             BulletMovement cloneScript = clone.GetComponent<BulletMovement>();
             cloneScript.SetTarget(enemyScript.transform);
-            cloneScript.SetDamage(status.damage);
+            cloneScript.SetDamage(damage);
 
             lastShootTime = Time.time;
         }
@@ -58,11 +68,11 @@ public class TurretCannon : MonoBehaviour
     //Rotate turret so it looks at target
     void LockOnTarget()
     {
-        if (lastChangeTargetTime + 1f < Time.time)
+        if (lastChangeTargetTime + 0.5f < Time.time)
         {
             Enemy[] enemyInstances = GameObject.FindObjectsOfType<Enemy>();
 
-            float distance, aux = status.radius;
+            float distance, aux = range;
             enemyScript = null;
             foreach (Enemy enemy in enemyInstances)
             {

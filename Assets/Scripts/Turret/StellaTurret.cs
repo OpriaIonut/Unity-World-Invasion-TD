@@ -90,7 +90,7 @@ public class StellaTurret : MonoBehaviour
     //Rotate turret so it looks at target
     void LockOnTarget()
     {
-        if (lastChangeTargetTime + 1f < Time.time)
+        if (lastChangeTargetTime + 0.5f < Time.time)
         {
             Enemy[] enemyInstances = GameObject.FindObjectsOfType<Enemy>();
 

@@ -38,6 +38,7 @@ public class BuildManager : MonoBehaviour {
 
     private void Start()
     {
+        walletText.text = "$" + levelMoney;
         buildTurretUI = GameObject.FindWithTag("TurretSpawnerUI");
         gameManager = LevelManager.instance;
     }
@@ -231,7 +232,7 @@ public class BuildManager : MonoBehaviour {
 
                     DeselectAll();
                 }
-                else
+                else if (selectedNodeScript != null && selectedNodeScript.buildTurret != null)
                 {
                     laserScript = selectedNodeScript.buildTurret.GetComponent<TurretLaser>();
                 }
@@ -255,7 +256,7 @@ public class BuildManager : MonoBehaviour {
 
                     DeselectAll();
                 }
-                else
+                else if(selectedNodeScript != null && selectedNodeScript.buildTurret != null)
                 {
                     cannonScript = selectedNodeScript.buildTurret.GetComponent<TurretCannon>();
                 }
@@ -279,7 +280,7 @@ public class BuildManager : MonoBehaviour {
 
                     DeselectAll();
                 }
-                else
+                else if (selectedNodeScript != null && selectedNodeScript.buildTurret != null)
                 {
                     bunkerScript = selectedNodeScript.buildTurret.GetComponent<TurretBunker>();
                 }

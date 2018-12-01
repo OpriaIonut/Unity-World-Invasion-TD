@@ -16,16 +16,24 @@ public class TurretLaser : MonoBehaviour
     private Enemy enemyScript;
     private Quaternion defaultRotation;
     private LevelManager gameManager;
+    private SceneDataRetainer dataRetainer;
 
     private float lastChangeTargetTime = 0f;
 
+    private float range;
+    private float damage;
+
     private void Start()
     {
+        dataRetainer = SceneDataRetainer.instance;
+        range = status.radius * dataRetainer.laserMultipliers[0];
+        damage = status.damage * dataRetainer.laserMultipliers[1];
+
         gameManager = LevelManager.instance;
         lineRenderer = GetComponent<LineRenderer>();
         defaultRotation = new Quaternion(0f, 180f, 0f, 0f).normalized;
 
-        rangeUI.transform.localScale = new Vector3(status.radius, status.radius, 1f);
+        rangeUI.transform.localScale = new Vector3(range, range, 1f);
     }
 
     private void Update()
@@ -52,18 +60,20 @@ public class TurretLaser : MonoBehaviour
                 enemyScript.Slow();
             }
 
-            enemyScript.TakeDamage(status.damage * Time.deltaTime);
+            enemyScript.TakeDamage(damage * Time.deltaTime);
         }
     }
 
     //Rotate turret so it looks at target
     void LockOnTarget()
     {
-        if (lastChangeTargetTime + 1f < Time.time)
+        if (lastChangeTargetTime + 0.5f < Time.time)
         {
             Enemy[] enemyInstances = GameObject.FindObjectsOfType<Enemy>();
 
-            float distance, aux = status.radius;
+            float distance, aux = range;
+            if(status.canSlow && enemyScript != null)
+                enemyScript.StopSlow();
             enemyScript = null;
             foreach (Enemy enemy in enemyInstances)
             {
