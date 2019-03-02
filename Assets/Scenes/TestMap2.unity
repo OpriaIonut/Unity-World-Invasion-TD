@@ -8400,7 +8400,7 @@ Prefab:
     - target: {fileID: 114420743943512326, guid: 45ff1aea5cb730d46824db09ea0370a7,
         type: 2}
       propertyPath: waveDescriptor.Array.size
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4035638589067316, guid: 45ff1aea5cb730d46824db09ea0370a7, type: 2}
       propertyPath: m_LocalPosition.x
@@ -8472,17 +8472,17 @@ Prefab:
     - target: {fileID: 114420743943512326, guid: 45ff1aea5cb730d46824db09ea0370a7,
         type: 2}
       propertyPath: waveDescriptor.Array.data[3]
-      value: n5a1
+      value: n5h3
       objectReference: {fileID: 0}
     - target: {fileID: 114420743943512326, guid: 45ff1aea5cb730d46824db09ea0370a7,
         type: 2}
       propertyPath: waveDescriptor.Array.data[4]
-      value: f5s1
+      value: f5h3
       objectReference: {fileID: 0}
     - target: {fileID: 114420743943512326, guid: 45ff1aea5cb730d46824db09ea0370a7,
         type: 2}
       propertyPath: waveDescriptor.Array.data[5]
-      value: n5f5b1
+      value: n5f5h5
       objectReference: {fileID: 0}
     - target: {fileID: 114420743943512326, guid: 45ff1aea5cb730d46824db09ea0370a7,
         type: 2}
@@ -9045,6 +9045,11 @@ Prefab:
       propertyPath: buildMenuCanvas
       value: 
       objectReference: {fileID: 173040393}
+    - target: {fileID: 114931607696396378, guid: f0a555d87d5d97d47855ca9c866454eb,
+        type: 2}
+      propertyPath: levelMoney
+      value: 250
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0a555d87d5d97d47855ca9c866454eb, type: 2}
   m_IsPrefabAsset: 0

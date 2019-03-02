@@ -183,7 +183,7 @@ public class PermanentUpgradeMenu : MonoBehaviour {
                     bunkerCurrentUpgradePrice[statusIndex] += priceIncrement;
                     data.bunkerCurrentStatusLevel[statusIndex]++;
 
-                    if (data.bunkerCurrentStatusLevel[statusIndex] == 4)
+                    if (data.bunkerCurrentStatusLevel[statusIndex] == 5)
                         bunkerPriceText[statusIndex].text = "Max";
                     else
                         bunkerPriceText[statusIndex].text = "" + bunkerCurrentUpgradePrice[statusIndex];
