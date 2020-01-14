@@ -37,7 +37,7 @@ public class PermanentUpgradeMenu : MonoBehaviour {
 
     private void Start()
     {
-        data = SceneDataRetainer.instance;
+        data = SceneDataRetainer.GetInstance();
 
         //Set the current price for all menus;
         int dataLevel;

@@ -12,7 +12,7 @@ public class EnemyMovement : MonoBehaviour {
 
     private void Start()
     {
-        gameManager = LevelManager.instance;
+        gameManager = LevelManager.GetInstance();
         waypointsScript = FindObjectOfType<WaypointsTransform>().GetComponent<WaypointsTransform>();
         enemyScript = GetComponent<Enemy>();
         target = waypointsScript.waypointsTransform[0];

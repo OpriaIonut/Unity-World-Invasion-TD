@@ -53,7 +53,7 @@ public class WaveSpawner : MonoBehaviour {
     private bool reachedEndOfLevel = false;     //Bool used to stop spawning after we spawned all waves.
 
 	void Start () {
-        levelManager = LevelManager.instance;
+        levelManager = LevelManager.GetInstance();
         waveText.text = "Wave\t0 / " + (waveDescriptor.Length - 1);
         textTimer = startSpawningTime;
 	}

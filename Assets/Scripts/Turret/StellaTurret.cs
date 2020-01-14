@@ -23,7 +23,7 @@ public class StellaTurret : MonoBehaviour
 
     private void Start()
     {
-        gameManager = LevelManager.instance;
+        gameManager = LevelManager.GetInstance();
         defaultRotation = new Quaternion(0f, 180f, 0f, 0f).normalized;
 
         rangeUI.transform.localScale = new Vector3(status.radius, status.radius, 1f);

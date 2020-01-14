@@ -25,11 +25,11 @@ public class TurretLaser : MonoBehaviour
 
     private void Start()
     {
-        dataRetainer = SceneDataRetainer.instance;
+        dataRetainer = SceneDataRetainer.GetInstance();
         range = status.radius * dataRetainer.laserMultipliers[0];
         damage = status.damage * dataRetainer.laserMultipliers[1];
 
-        gameManager = LevelManager.instance;
+        gameManager = LevelManager.GetInstance();
         lineRenderer = GetComponent<LineRenderer>();
         defaultRotation = new Quaternion(0f, 180f, 0f, 0f).normalized;
 

@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour {
 
     #region Singleton
-    public static LevelManager instance;
+    private static LevelManager instance;
+    public static LevelManager GetInstance() { return instance; }
 
     private void Awake()
     {
@@ -40,7 +41,7 @@ public class LevelManager : MonoBehaviour {
 
     private void Start()
     {
-        data = SceneDataRetainer.instance;
+        data = SceneDataRetainer.GetInstance();
         pauseGameCanvas.SetActive(gameIsPaused);
     }
 

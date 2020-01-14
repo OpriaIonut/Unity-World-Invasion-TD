@@ -18,7 +18,7 @@ public class LevelSelectCanvas : MonoBehaviour {
 
     private void Start()
     {
-        data = SceneDataRetainer.instance;
+        data = SceneDataRetainer.GetInstance();
         for(int index = 0; index < data.starsPerLevel.Length; index++)
         {
             if (index < stars.Length)

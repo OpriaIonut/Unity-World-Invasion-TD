@@ -3,7 +3,9 @@
 public class SceneDataRetainer : MonoBehaviour {
 
     #region Singleton
-    public static SceneDataRetainer instance;
+    private static SceneDataRetainer instance;
+
+    public static SceneDataRetainer GetInstance() { return instance; }
 
     private void Awake()
     {

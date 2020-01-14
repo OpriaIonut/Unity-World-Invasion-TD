@@ -16,7 +16,7 @@ public class BulletMovement : MonoBehaviour {
 
     private void Start()
     {
-        gameManager = LevelManager.instance;
+        gameManager = LevelManager.GetInstance();
     }
 
     private void Update()

@@ -25,12 +25,12 @@ public class TurretBunker : MonoBehaviour
 
     private void Start()
     {
-        dataRetainer = SceneDataRetainer.instance;
+        dataRetainer = SceneDataRetainer.GetInstance();
         range = status.radius * dataRetainer.bunkerMultipliers[0];
         damage = status.damage * dataRetainer.bunkerMultipliers[1];
         fireRate = status.fireRate / dataRetainer.bunkerMultipliers[2];
 
-        gameManager = LevelManager.instance;
+        gameManager = LevelManager.GetInstance();
         anim = GetComponent<Animator>();
 
         rangeUI.transform.localScale = new Vector3(range, range, 1f);

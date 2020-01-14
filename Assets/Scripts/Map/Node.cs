@@ -17,7 +17,7 @@ public class Node : MonoBehaviour {
     {
         renderer = GetComponent<Renderer>();
         defaultColor = renderer.material.color;
-        gameManager = LevelManager.instance;
+        gameManager = LevelManager.GetInstance();
     }
 
     private void OnMouseEnter()
@@ -32,7 +32,7 @@ public class Node : MonoBehaviour {
     {
         if (!gameManager.gameIsPaused)
         {
-            if (BuildManager.instance.GetSelectedNode() != this)
+            if (BuildManager.GetInstance().GetSelectedNode() != this)
             {
                 SetColor(defaultColor);
             }

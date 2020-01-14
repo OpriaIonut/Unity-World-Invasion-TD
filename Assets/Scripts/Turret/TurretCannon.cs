@@ -24,12 +24,12 @@ public class TurretCannon : MonoBehaviour
 
     private void Start()
     {
-        dataRetainer = SceneDataRetainer.instance;
+        dataRetainer = SceneDataRetainer.GetInstance();
         range = status.radius * dataRetainer.cannonMultipliers[0];
         damage = status.damage * dataRetainer.cannonMultipliers[1];
         fireRate = status.fireRate / dataRetainer.cannonMultipliers[2];
 
-        gameManager = LevelManager.instance;
+        gameManager = LevelManager.GetInstance();
         defaultRotation = new Quaternion(0f, 180f, 0f, 0f).normalized;
 
         rangeUI.transform.localScale = new Vector3(range, range, 1f);

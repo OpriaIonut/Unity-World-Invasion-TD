@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour {
 
     private void Start()
     {
-        gameManager = LevelManager.instance;
+        gameManager = LevelManager.GetInstance();
         speed = enemyStatus.speed;
         health = enemyStatus.health * (1f + gameManager.currentLevel / 15f);
     }
@@ -38,7 +38,7 @@ public class Enemy : MonoBehaviour {
 
     void Die()
     {
-        BuildManager.instance.AddMoney(enemyStatus.moneyValue);
+        BuildManager.GetInstance().AddMoney(enemyStatus.moneyValue);
         Destroy(gameObject);
     }
 

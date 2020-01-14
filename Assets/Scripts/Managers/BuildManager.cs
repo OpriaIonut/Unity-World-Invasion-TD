@@ -2,10 +2,11 @@
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class BuildManager : MonoBehaviour {
-
-    //Singleton
-    public static BuildManager instance;
+public class BuildManager : MonoBehaviour
+{
+    #region Singleton
+    private static BuildManager instance;
+    public static BuildManager GetInstance() { return instance; }
 
     private void Awake()
     {
@@ -17,7 +18,7 @@ public class BuildManager : MonoBehaviour {
         }
         instance = this;
     }
-    //End singleton
+    #endregion
 
     public int levelMoney = 350;
     public Text walletText;
@@ -40,7 +41,7 @@ public class BuildManager : MonoBehaviour {
     {
         walletText.text = "$" + levelMoney;
         buildTurretUI = GameObject.FindWithTag("TurretSpawnerUI");
-        gameManager = LevelManager.instance;
+        gameManager = LevelManager.GetInstance();
     }
 
     private void Update()
